@@ -1,0 +1,81 @@
+#!/bin/bash
+
+## PMan
+## Pacman package handler
+
+PS3="Enter a pacman option: "
+OP=(
+				"Update & Upgrade" 
+				"Install an application" 
+				"Uninstall an application"
+				"Uninstall application and dependecies"
+				"Search for an application"
+				"List orphan dependencies"
+				"Quit"
+)
+
+select OPT in "${OP[@]}"
+do
+				case $OPT in
+								"Update & Upgrade")
+												echo "Command => [sudo pacman -Suy]"
+												sudo pacman -Suy
+
+												break
+												;;
+
+								"Install an application")
+												echo "Enter the app name to install: "
+												read appname
+
+												echo "Command => [sudo pacman -S $appname]"
+
+												sudo pacman -S $appname
+
+												break
+												;;
+
+								"Uninstall an application")
+												echo "Enter the app name to uninstall: "
+												read appname
+
+												echo "Command => [sudo pacman -R $appname]"
+
+												sudo pacman -R $appname
+												break
+												;;
+
+								"Uninstall application and dependecies")
+												echo "Enter the app name to uninstall: "
+												read appname
+												
+												echo "Command => [sudo pacman -Rs $appname]"
+
+												sudo pacman -Rs $appname
+												break;
+												;;
+
+								"Search for an application")
+												echo "Enter a name to search for: "
+												read searchname
+											
+												echo "Command => [sudo pacman -Ss $searchname]"
+
+												pacman -Ss $searchname
+												break
+												;;
+
+								"List orphan dependencies")
+												echo "Command => [sudo pacman -Qdt]"
+
+												pacman -Qdt
+												break
+												;;
+
+								"Quit")
+												break
+												;;
+
+								*) echo "Invalid $REPLY";;
+				esac
+done
