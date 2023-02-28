@@ -4,7 +4,7 @@
 ## Pacman package handler
 
 ### User as root?
-if [$EUID -ne 0]; then
+if [ $EUID -ne 0 ]; then
 	echo $'Not running as ROOT\n'
 else
 	echo $'Running as ROOT\n'
@@ -28,7 +28,7 @@ do
 								"Update & Upgrade")
 												echo "Command => [sudo pacman -Suy]"
 												
-												if [$EUID -ne 0]; then
+												if [ $EUID -ne 0 ]; then
 													sudo pacman -Suy
 												else
 													pacman -Suy
@@ -43,7 +43,7 @@ do
 
 												echo "Command => [sudo pacman -S $appname]"
 
-												if [$EUID -ne 0]; then
+												if [ $EUID -ne 0 ]; then
 													sudo pacman -S $appname
 												else
 													pacman -S $appname
@@ -58,7 +58,7 @@ do
 
 												echo "Command => [sudo pacman -R $appname]"
 
-												if [$EUID -ne 0]; then
+												if [ $EUID -ne 0 ]; then
 													sudo pacman -R $appname
 												else
 													pacman -R $appname
@@ -73,7 +73,7 @@ do
 												
 												echo "Command => [sudo pacman -Rs $appname]"
 
-												if [$EUID -ne 0]; then
+												if [ $EUID -ne 0 ]; then
 													sudo pacman -Rs $appname
 												else
 													pacman -Rs $appname
