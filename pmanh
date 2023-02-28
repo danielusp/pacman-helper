@@ -3,6 +3,15 @@
 ## PMan
 ## Pacman package handler
 
+VERSION='v0.1.0'
+
+## Version
+if [ $1 = '-v' ]; then
+	echo "Pacman Helper"
+	echo "Version: $VERSION"
+	exit 0
+fi
+
 ### User as root?
 if [ $EUID -ne 0 ]; then
 	echo $'Not running as ROOT\n'
