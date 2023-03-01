@@ -2,8 +2,20 @@
 
 echo "Installing pmanh"
 
-cp -r ./../pacman-helper /usr/lib
+if [ $EUID -ne 0 ]; then
+	## For 'non root' user
 
-ln -s /usr/lib/pacman-helper/pmanh /usr/bin/pmanh
+	### Move app directory to lib user directory
+	sudo cp -r ./../pacman-helper /usr/lib
 
+	### Create symbolic lync into bin directory
+	sudo ln -s /usr/lib/pacman-helper/pmanh /usr/bin/pmanh
+else
+	## For 'root' user
+	
+	cp -r ./../pacman-helper /usr/lib
+	ln -s /usr/lib/pacman-helper/pmanh /usr/bin/pmanh
+fi
+
+## App has been installed
 pmanh -v
