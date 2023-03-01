@@ -3,10 +3,10 @@
 ## PMan
 ## Pacman package handler
 
-VERSION='v0.1.0'
+VERSION='v0.2.0'
 
 ## Version
-if [ $1 = '-v' ]; then
+if [ $1 = '-v' ] || [ $1 = '--version' ]; then
 	echo "Pacman Helper"
 	echo "Version: $VERSION"
 	exit 0
